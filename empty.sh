@@ -22,7 +22,7 @@ function empty {
 			echo "Removed all files from $INDIR"
 			return 1
 		else
-			echo "This directory is empty."
+			echo "This directory is already empty."
 			return 1
 		fi
 	else
@@ -31,4 +31,13 @@ function empty {
 	fi
 }
 
-empty
+# Make sure user wants to empty INDIR
+echo "Are you sure you want to empty $INDIR? (y/n)"
+read INPUT
+
+if [[ $INPUT == y ]]
+then
+	empty
+else
+	echo "$INDIR was not emptied"
+fi
